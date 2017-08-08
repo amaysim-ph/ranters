@@ -4,6 +4,7 @@
 <%= form_for Rant.new  do |f| %>
   <%= f.hidden_field :ranter_id, value: @ranter.id %>
   <%= f.text_field :message %>
+  <%= f.file_field :photo %>
   <%= f.submit 'Rant' %>
 <% end %>
 
@@ -12,6 +13,9 @@
     <li>
       <p><%= rant.message %></p>
       <span><%= rant.created_at %></span>
+      <a href="<%= rant.photo.url %>">
+        <img src="<%= rant.photo.url(:thumbnail) %>">
+      </a>
     </li>
   <% end %>
 </ul>

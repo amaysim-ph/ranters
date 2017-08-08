@@ -8,6 +8,6 @@ class RantsController < ApplicationController
   private
 
   def rant_params
-    params.require(:rant).permit(:ranter_id, :message)
+    params.require(:rant).permit(:ranter_id, :message, :photo)
   end
 end
