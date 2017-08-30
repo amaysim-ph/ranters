@@ -21,4 +21,8 @@ class Ranter < ApplicationRecord
   def follow!(followee)
     self.followees << followee
   end
+
+  def followable?(follower)
+    follower != self && !follower.followees.include?(self)
+  end
 end
