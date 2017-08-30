@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :rants, only: [:create]
+  resources :ranters, only: [:index, :show] do
+    member do
+      get 'follow'
+    end
+  end
 end

@@ -8,8 +8,9 @@ class Ranter < ApplicationRecord
 
   has_many :rants
 
-  has_many :follows_as_follower, class_name: 'Follow', foreign_key: :follower_id
   has_many :follows_as_followee, class_name: 'Follow', foreign_key: :followee_id
+  has_many :follows_as_follower, class_name: 'Follow', foreign_key: :follower_id
+
   has_many :followers, through: :follows_as_followee
   has_many :followees, through: :follows_as_follower
 
@@ -23,6 +24,6 @@ class Ranter < ApplicationRecord
   end
 
   def followable?(follower)
-    follower != self && !follower.followees.include?(self)
+    follower != self && !self.followers.include?(follower)
   end
 end

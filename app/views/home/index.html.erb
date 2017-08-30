@@ -1,6 +1,7 @@
 <h2><%= @ranter.handle %></h2>
 <img src="<%= @ranter.gravatar_url %>" />
 
+<%= link_to 'Ranters', ranters_path %>
 <%= link_to 'Signout', destroy_ranter_session_path, method: :delete %>
 
 <%= form_for Rant.new  do |f| %>

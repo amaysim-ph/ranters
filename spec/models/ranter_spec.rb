@@ -7,7 +7,7 @@ RSpec.describe Ranter, type: :model do
 
     subject { ranter.follow!(followee) }
 
-    it 'make the ranter follow a followee' do
+    it 'makes the ranter follow a followee' do
       subject
 
       expect(ranter.followees).to include(followee)
@@ -25,13 +25,13 @@ RSpec.describe Ranter, type: :model do
 
     subject { ranter.followable?(follower) }
 
-    context 'given the ranter and follower is the same' do
+    context 'given follower is also the ranter' do
       let(:follower) { ranter }
 
       it { is_expected.to be_falsy }
     end
 
-    context 'given the ranter is already being followed by the follower' do
+    context 'given follower is already following the ranter' do
       let(:follower) { FactoryGirl.create(:ranter) }
 
       before do
@@ -41,7 +41,7 @@ RSpec.describe Ranter, type: :model do
       it { is_expected.to be_falsy }
     end
 
-    context 'given the ranter is not being followed by the follower' do
+    context 'given the follower is not following the ranter' do
       let(:follower) { FactoryGirl.create(:ranter) }
 
       it { is_expected.to be_truthy }

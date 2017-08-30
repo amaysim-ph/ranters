@@ -1,0 +1,10 @@
+<ul>
+  <% @ranters.each do |ranter| %>
+    <li>
+      <%= link_to ranter.handle, ranter %>
+      <% if ranter.followable?(current_ranter) %>
+        <%= link_to 'Follow', follow_ranter_path(ranter) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
